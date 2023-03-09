@@ -17,14 +17,14 @@ public class Main {
         integerList.add(2);
         integerList.add(-3);
         integerList.add(-5);
-
+        Predicate<Integer> integerPredicate = new Predicate<Integer>() {
+            @Override
+            public boolean test(Integer element) {
+                return element > 0;
+            }
+        };
         for (Integer element : integerList) {
-            if(new Predicate<Integer>() {
-                @Override
-                public boolean test(Integer element) {
-                    return element > 0;
-                }
-            }.test(element)) {
+            if(integerPredicate.test(element)) {
                 System.out.println(element);
             }
         }
@@ -69,14 +69,14 @@ public class Main {
         doubleList.add(11.5);
         doubleList.add(16.7);
         doubleList.add(29.4);
-
+        Function<Double, Long> doubleLongFunction = new Function<Double, Long>() {
+            @Override
+            public Long apply(Double aDouble) {
+                return aDouble.longValue();
+            }
+        };
         for (Double element: doubleList){
-            System.out.println(new Function<Double, Long>() {
-                @Override
-                public Long apply(Double aDouble) {
-                    return aDouble.longValue();
-                }
-            }.apply(element));
+            System.out.println(doubleLongFunction.apply(element));
         }
 
         Function<Double, Long> function = d -> d.longValue();
